@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meetuper/src/widgets/bootom_navigation.dart';
 
 class CounterHomeScreen extends StatefulWidget {
   final String _title;
@@ -29,11 +30,15 @@ class _CounterHomeScreenState extends State<CounterHomeScreen> {
               'Click counter: $_counter',
               textDirection: TextDirection.ltr,
               style: TextStyle(fontSize: 30.0),
+            ),
+            ElevatedButton(
+              child: Text('Go to meetup details'),
+              onPressed: () => Navigator.pushNamed(context, '/meetupDetails'),
             )
           ],
         ),
       ),
-      bottomNavigationBar: _BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(),
       floatingActionButton: FloatingActionButton(
         onPressed: _increment,
         tooltip: 'Press here to increment...',
@@ -41,26 +46,5 @@ class _CounterHomeScreenState extends State<CounterHomeScreen> {
       ),
       appBar: AppBar(title: Text(widget._title)),
     );
-  }
-}
-
-class _BottomNavigation extends StatefulWidget {
-  @override
-  _BottomNavigationState createState() => _BottomNavigationState();
-}
-
-class _BottomNavigationState extends State<_BottomNavigation> {
-  int _currentIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) => setState(() => _currentIndex = index),
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
-        ]);
   }
 }
