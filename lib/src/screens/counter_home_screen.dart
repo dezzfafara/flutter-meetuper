@@ -6,10 +6,10 @@ class CounterHomeScreen extends StatefulWidget {
   CounterHomeScreen(this._title);
 
   @override
-  CounterHomeScreenState createState() => CounterHomeScreenState();
+  _CounterHomeScreenState createState() => _CounterHomeScreenState();
 }
 
-class CounterHomeScreenState extends State<CounterHomeScreen> {
+class _CounterHomeScreenState extends State<CounterHomeScreen> {
   int _counter = 0;
 
   _increment() {
@@ -33,6 +33,7 @@ class CounterHomeScreenState extends State<CounterHomeScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: _BottomNavigation(),
       floatingActionButton: FloatingActionButton(
         onPressed: _increment,
         tooltip: 'Press here to increment...',
@@ -40,5 +41,26 @@ class CounterHomeScreenState extends State<CounterHomeScreen> {
       ),
       appBar: AppBar(title: Text(widget._title)),
     );
+  }
+}
+
+class _BottomNavigation extends StatefulWidget {
+  @override
+  _BottomNavigationState createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<_BottomNavigation> {
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int index) => setState(() => _currentIndex = index),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
+        ]);
   }
 }
