@@ -44,8 +44,7 @@ class _PostScreenState extends State<PostScreen> {
 class _PostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts =
-        context.dependOnInheritedWidgetOfExactType<_InheritedPost>().posts;
+    final posts = _InheritedPost.of(context).posts;
 
     return Scaffold(
       body: ListView.builder(
@@ -81,10 +80,16 @@ class _InheritedPost extends InheritedWidget {
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
+
+  static of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_InheritedPost>();
 }
 
 class _PostButton extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => FloatingActionButton(
-      onPressed: () => {}, tooltip: 'Add Post', child: Icon(Icons.add));
+  Widget build(BuildContext context) {
+    final createPost = _InheritedPost.of(context).createPost;
+    return FloatingActionButton(
+        onPressed: createPost, tooltip: 'Add Post', child: Icon(Icons.add));
+  }
 }
