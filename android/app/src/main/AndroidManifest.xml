@@ -2,6 +2,7 @@
     package="com.example.flutter_meetuper">
    <application
         android:label="flutter_meetuper"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

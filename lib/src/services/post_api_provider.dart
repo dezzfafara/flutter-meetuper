@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_meetuper/src/model/post.dart';
-import 'package:http/http.dart';
 
 class PostApiProvider {
   static final PostApiProvider _instance = PostApiProvider._internal();
@@ -11,9 +10,9 @@ class PostApiProvider {
   factory PostApiProvider() => _instance;
 
   Future<List<Post>> fetchPosts() async {
-    var uri = Uri.https('jsonplaceholder.typicode.com', '/posts');
-    var r = await get(uri);
-    List<dynamic> parsed = jsonDecode(r.body);
-    return parsed.map((pp) => Post.fromJson(pp)).take(3).toList();
+    // var uri = Uri.https('jsonplaceholder.typicode.com', '/posts');
+    // var r = await get(uri);
+    // List<dynamic> parsed = jsonDecode(r.body);
+    // return parsed.map((pp) => Post.fromJson(pp)).take(3).toList();
   }
 }
