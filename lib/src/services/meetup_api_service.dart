@@ -1,7 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:dio/dio.dart';
-import 'package:flutter_meetuper/src/model/meetup.dart';
+import 'package:flutter_meetuper/src/models/meetup.dart';
 
 class MeetupApiService {
   final Dio dio = Dio();

@@ -1,5 +1,5 @@
 import 'package:faker/faker.dart';
-import 'package:flutter_meetuper/src/model/post.dart';
+import 'package:flutter_meetuper/src/models/post.dart';
 import 'package:flutter_meetuper/src/services/post_api_provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 

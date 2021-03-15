@@ -1,4 +1,4 @@
-import 'package:flutter_meetuper/src/model/category.dart';
+import 'package:flutter_meetuper/src/models/category.dart';
 
 class Meetup {
   final String id;

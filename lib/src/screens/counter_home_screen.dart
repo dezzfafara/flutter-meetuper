@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meetuper/src/widgets/bootom_navigation.dart';
+import 'package:flutter_meetuper/src/widgets/bottom_navigation.dart';
 
 class CounterHomeScreen extends StatefulWidget {
   final String _title;

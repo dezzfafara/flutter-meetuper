@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_meetuper/src/model/post.dart';
+import 'package:flutter_meetuper/src/models/post.dart';
 
 class PostApiProvider {
   static final PostApiProvider _instance = PostApiProvider._internal();

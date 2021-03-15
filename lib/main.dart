@@ -10,7 +10,7 @@ class MeetuperApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.amber),
+        theme: ThemeData(primarySwatch: Colors.orange),
         //home: CounterHomeScreen(_title),
         //home: PostScreen(),
         home: MeetupHomeScreen(),

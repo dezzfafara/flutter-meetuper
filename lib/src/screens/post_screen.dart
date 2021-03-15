@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meetuper/src/model/post.dart';
-import 'package:flutter_meetuper/src/scoped_model/post_model.dart';
+import 'package:flutter_meetuper/src/models/post.dart';
+import 'package:flutter_meetuper/src/scoped_models/post_model.dart';
 import 'package:flutter_meetuper/src/state/app_state.dart';
-import 'package:flutter_meetuper/src/widgets/bootom_navigation.dart';
+import 'package:flutter_meetuper/src/widgets/bottom_navigation.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class PostScreen extends StatefulWidget {
