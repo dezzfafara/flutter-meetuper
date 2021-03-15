@@ -10,11 +10,17 @@ class MeetuperApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.amber),
-      //home: CounterHomeScreen(_title),
-      //home: PostScreen(),
-      home: MeetupHomeScreen(),
-      routes: {MeetupDetailScreen.route: (context) => MeetupDetailScreen()},
-    );
+        theme: ThemeData(primarySwatch: Colors.amber),
+        //home: CounterHomeScreen(_title),
+        //home: PostScreen(),
+        home: MeetupHomeScreen(),
+        //routes: {MeetupDetailScreen.route: (context) => MeetupDetailScreen()},
+        onGenerateRoute: (RouteSettings settings) {
+          if (settings.name == MeetupDetailScreen.route) {
+            final String meetupId = settings.arguments;
+            return MaterialPageRoute(
+                builder: (context) => MeetupDetailScreen(meetupId: meetupId));
+          }
+        });
   }
 }

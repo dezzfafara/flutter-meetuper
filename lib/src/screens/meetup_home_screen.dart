@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meetuper/src/model/meetup.dart';
+import 'package:flutter_meetuper/src/screens/meetup_detail_screen.dart';
 import 'package:flutter_meetuper/src/services/meetup_api_service.dart';
 
 class MeetupHomeScreen extends StatefulWidget {
@@ -20,9 +21,7 @@ class _MeetupHomeScreenState extends State<MeetupHomeScreen> {
 
   _fetchMeetups() async {
     var res = await widget.api.fetchMeetups();
-    setState(() {
-      this.meetups = res;
-    });
+    setState(() => this.meetups = res);
   }
 
   @override
@@ -63,7 +62,11 @@ class _MeetupCard extends StatelessWidget {
       ),
       ButtonBar(
         children: [
-          TextButton(child: Text('Visit meetup'), onPressed: () => {}),
+          TextButton(
+              child: Text('Visit meetup'),
+              onPressed: () => Navigator.pushNamed(
+                  context, MeetupDetailScreen.route,
+                  arguments: meetup.id)),
           TextButton(child: Text('Favorite'), onPressed: () => {})
         ],
       ),
