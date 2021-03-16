@@ -4,6 +4,7 @@ import 'package:flutter_meetuper/src/screens/meetup_detail_screen.dart';
 import 'package:flutter_meetuper/src/services/meetup_api_service.dart';
 
 class MeetupHomeScreen extends StatefulWidget {
+  static final String route = '/meetupHomeScreen';
   final MeetupApiService api = MeetupApiService();
 
   @override
