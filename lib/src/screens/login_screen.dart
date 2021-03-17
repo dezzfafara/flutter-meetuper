@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meetuper/src/models/forms.dart';
 import 'package:flutter_meetuper/src/screens/meetup_home_screen.dart';
 import 'package:flutter_meetuper/src/screens/register_screen.dart';
+import 'package:flutter_meetuper/src/utils/validators.dart';
 
 class LoginScreen extends StatefulWidget {
   static final String route = '/login';
@@ -19,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
 
   LoginFormData _loginFormData = LoginFormData();
+
+  AutovalidateMode _validateMode = AutovalidateMode.disabled;
 
   @override
   initState() {
@@ -39,6 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
       form.save();
       print(
           'Data from form: email: ${_loginFormData.email}; password: ${_loginFormData.password}');
+    } else {
+      setState(() => _validateMode = AutovalidateMode.always);
     }
   }
 
@@ -70,9 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Padding(
           padding: EdgeInsets.all(20.0),
           child: Form(
+            autovalidateMode: _validateMode,
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 Container(
                   margin: EdgeInsets.only(bottom: 15.0),
@@ -87,12 +92,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   onSaved: (value) => _loginFormData.email = value,
                   decoration: InputDecoration(hintText: 'Email Address'),
                   key: _emailKey,
+                  // ignore: missing_return
+                  validator: composeValidators('email',
+                      [requiredValidator, minLengthValidator, emailValidator]),
                 ),
                 TextFormField(
                   style: Theme.of(context).textTheme.headline5,
                   onSaved: (value) => _loginFormData.password = value,
                   decoration: InputDecoration(hintText: 'Password'),
                   key: _passwordKey,
+                  // ignore: missing_return
+                  validator: composeValidators(
+                      'password', [requiredValidator, minLengthValidator]),
                 ),
                 _buildLinks(),
                 Container(
